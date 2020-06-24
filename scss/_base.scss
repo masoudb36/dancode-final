@@ -1,0 +1,83 @@
+@font-face {
+    font-family: 'samim';
+    src: url('../font/Samim.eot');
+    src: url('../font/Samim.woff2') format('woff2'), url('../font/Samim.woff') format('woff'), url('../font/Samim.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'samim-bold';
+    font-weight: bold;
+    src: url('../font/Samim-Bold.eot');
+    src: url('../font/Samim-Bold.woff2') format('woff2'), url('../font/Samim-Bold.woff') format('woff'), url('../font/Samim-Bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'samim-num';
+    src: url('../font/Farsi-Digits/Samim-FD.eot');
+    src: url('../font/Farsi-Digits/Samim-FD.woff2') format('woff2'), url('../font/Farsi-Digits/Samim-FD.woff') format('woff'), url('../font/Farsi-Digits/Samim-FD.ttf') format('truetype');
+}
+
+// FONT VARIABLES
+$font-primary: 'samim',
+'samim-bold',
+'samim-num',
+sans-serif;
+$font-num: 'samim-num',
+sans-serif;
+// COLOR
+$color-bg:#181818;
+$color-white:#dcdcdc;
+$color-blue:#3282b8;
+$color-blue-hover:#1bc0ff;
+$color-green:#47CF73;
+// RESPONSIVE BREAKPOINTS
+$bp-largest: 75em; // 1200px
+$bp-large: 62.5em; // 1000px
+$bp-medium: 51em; // 800px;
+$bp-small: 31.2em; // 600px;
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%; // 10px/16px = 62.5% -> 1rem = 10px
+    @media only screen and (max-width: $bp-large) {
+        font-size: 50%;
+    }
+}
+
+body {
+    font-family: $font-primary;
+    font-weight: 300;
+    line-height: 1.6;
+    direction: rtl;
+    background-color: $color-bg;
+    color: $color-white;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: [full-start] minmax(6rem, 1fr) [center-start] repeat(8, minmax(min-content, 14rem)) [center-end] minmax(6rem, 1fr)[full-end];
+    // grid-template-columns: [full-start] minmax(6rem, 1fr) [center-start] 8fr [center-end] minmax(6rem, 1fr)[full-end];
+    grid-template-rows: 100vh min-content repeat(5, min-content);
+    grid-row-gap: 7rem;
+    @media only screen and (max-width: $bp-large) {
+        grid-template-columns: [full-start] minmax(3rem, 1fr) [center-start] repeat(8, minmax(min-content, 14rem)) [center-end] minmax(3rem, 1fr)[full-end];
+        grid-template-rows: 50vh min-content repeat(5, min-content);
+    }
+    @media only screen and (max-width: $bp-medium) {
+        grid-template-rows: 50vh minmax(min-content, 14rem) repeat(5, min-content);
+        grid-row-gap: 5rem;
+        // grid-template-rows: calc(100vh - 6rem);
+    }
+    @media only screen and (max-width: $bp-small) {
+        // grid-template-rows: 70vh 12rem repeat(5, min-content);
+        grid-row-gap: 2rem;
+    }
+    // overflow: hidden;
+}
